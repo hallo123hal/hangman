@@ -1,0 +1,61 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.map.nguyensontung.hangman"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml
+10
+11    <application
+11-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:5:5-27:19
+12        android:allowBackup="true"
+12-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:6:9-35
+13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+13-->[androidx.core:core:1.3.2] C:\Users\Admin\.gradle\caches\transforms-3\ea294d8ab79a9bb82f83c7808e59e084\transformed\core-1.3.2\AndroidManifest.xml:24:18-86
+14        android:debuggable="true"
+15        android:icon="@mipmap/ic_launcher"
+15-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:7:9-43
+16        android:label="@string/app_name"
+16-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:8:9-41
+17        android:roundIcon="@mipmap/ic_launcher_round"
+17-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:9:9-54
+18        android:supportsRtl="true"
+18-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:10:9-35
+19        android:testOnly="true"
+20        android:theme="@style/Theme.Hangman" >
+20-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:11:9-45
+21        <activity
+21-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:13:9-23:20
+22            android:name="com.map.nguyensontung.hangman.MainActivity"
+22-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:14:13-41
+23            android:exported="true"
+23-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:17:13-36
+24            android:label="@string/app_name"
+24-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:15:13-45
+25            android:theme="@style/Theme.Hangman.NoActionBar" >
+25-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:16:13-61
+26            <intent-filter>
+26-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:18:13-22:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:19:17-69
+27-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:19:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:21:17-77
+29-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:21:27-74
+30            </intent-filter>
+31        </activity>
+32        <activity
+32-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:25:9-84
+33            android:name="com.map.nguyensontung.hangman.GameActivity"
+33-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:25:19-47
+34            android:exported="true" >
+34-->D:\Android\Projects\Hangman\app\src\main\AndroidManifest.xml:25:48-71
+35        </activity>
+36    </application>
+37
+38</manifest>
