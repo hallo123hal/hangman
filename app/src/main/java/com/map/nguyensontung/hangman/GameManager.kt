@@ -3,22 +3,37 @@ package com.map.nguyensontung.hangman
 import kotlin.random.Random
 
 class GameManager {
-
-    private var lettersUsed: String = ""
     private lateinit var underscoreWord: String
     private lateinit var wordToGuess: String
     private val maxTries = 7
     private var currentTries = 0
     private var drawable: Int = R.drawable.game0
+    private var selectedPosition: Int = 0
+    private val positionGuesses = mutableMapOf<Int, MutableSet<Char>>()
+    private var hintUsed = false
 
     fun startNewGame(): GameState {
-        lettersUsed = ""
         currentTries = 0
-        drawable = R.drawable.game7
+        drawable = R.drawable.game0
+        selectedPosition = 0
+        positionGuesses.clear()
         val randomIndex = Random.nextInt(0, GameConstants.words.size)
         wordToGuess = GameConstants.words[randomIndex]
         generateUnderscores(wordToGuess)
+        hintUsed = false  // Reset hint usage on new game
         return getGameState()
+    }
+
+    fun setSelectedPosition(position: Int) {
+        if (position < wordToGuess.length) {
+            selectedPosition = position
+        }
+    }
+
+    fun getSelectedPosition(): Int = selectedPosition
+
+    fun getGuessesForPosition(position: Int): Set<Char> {
+        return positionGuesses[position] ?: emptySet()
     }
 
     fun generateUnderscores(word: String) {
@@ -34,30 +49,17 @@ class GameManager {
     }
 
     fun play(letter: Char): GameState {
-        if (lettersUsed.contains(letter)) {
-            return GameState.Running(lettersUsed, underscoreWord, drawable)
-        }
+        if (selectedPosition < wordToGuess.length) {
+            positionGuesses.getOrPut(selectedPosition) { mutableSetOf() }.add(letter)
 
-        lettersUsed += letter
-        val indexes = mutableListOf<Int>()
-
-        wordToGuess.forEachIndexed { index, char ->
-            if (char.equals(letter, true)) {
-                indexes.add(index)
+            if (wordToGuess[selectedPosition].equals(letter, true)) {
+                val sb = StringBuilder(underscoreWord)
+                sb.setCharAt(selectedPosition, letter)
+                underscoreWord = sb.toString()
+            } else {
+                currentTries++
             }
         }
-
-        var finalUnderscoreWord = "" + underscoreWord // _ _ _ _ _ _ _ -> E _ _ _ _ _ _
-        indexes.forEach { index ->
-            val sb = StringBuilder(finalUnderscoreWord).also { it.setCharAt(index, letter) }
-            finalUnderscoreWord = sb.toString()
-        }
-
-        if (indexes.isEmpty()) {
-            currentTries++
-        }
-
-        underscoreWord = finalUnderscoreWord
         return getGameState()
     }
 
@@ -85,6 +87,19 @@ class GameManager {
         }
 
         drawable = getHangmanDrawable()
-        return GameState.Running(lettersUsed, underscoreWord, drawable)
+        val currentGuesses = getGuessesForPosition(selectedPosition)
+        return GameState.Running(currentGuesses, underscoreWord, drawable, selectedPosition)
     }
+
+    fun useHint(): GameState {
+        if (!hintUsed && selectedPosition < wordToGuess.length) {
+            val correctLetter = wordToGuess[selectedPosition]
+            val sb = StringBuilder(underscoreWord)
+            sb.setCharAt(selectedPosition, correctLetter)
+            underscoreWord = sb.toString()
+            hintUsed = true
+        }
+        return getGameState()
+    }
+    fun isHintUsed(): Boolean = hintUsed
 }

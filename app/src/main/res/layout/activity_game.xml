@@ -14,6 +14,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        android:textSize="24sp"
+        android:layout_margin="16dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/hintButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/hint_button_background"
+        android:src="@drawable/ic_baseline_lightbulb_24"
+        android:padding="8dp"
+        android:contentDescription="Hint"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
         android:id="@+id/gameLostTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +46,6 @@
         android:textSize="36sp"
         android:textStyle="bold"
         android:visibility="gone"
-        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/imageView"
         app:layout_constraintEnd_toEndOf="@id/imageView"
         app:layout_constraintStart_toStartOf="@id/imageView"
@@ -42,18 +64,16 @@
         app:layout_constraintBottom_toBottomOf="@id/imageView"
         app:layout_constraintEnd_toEndOf="@id/imageView"
         app:layout_constraintStart_toStartOf="@id/imageView"
-        app:layout_constraintTop_toTopOf="@id/imageView"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toTopOf="@id/imageView" />
 
-    <TextView
-        android:id="@+id/wordTextView"
+    <LinearLayout
+        android:id="@+id/wordContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:letterSpacing="0.3"
-        android:textSize="26sp"
-        app:layout_constraintTop_toBottomOf="@id/imageView"
-        tools:text="_ _ ABCD_ _ _ _ _ _ _" />
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/imageView" />
 
     <TextView
         android:id="@+id/lettersUsedTextView"
@@ -62,8 +82,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/wordTextView"
-        tools:text="Used Letters: A, B, C, D, E, F, G" />
+        app:layout_constraintTop_toBottomOf="@id/wordContainer" />
 
     <Button
         android:id="@+id/newGameButton"

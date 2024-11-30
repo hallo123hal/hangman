@@ -1172,6 +1172,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color selected_position
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
@@ -1341,6 +1342,7 @@ dimen hint_pressed_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
+dimen letter_spacing
 dimen material_clock_display_padding
 dimen material_clock_face_margin_top
 dimen material_clock_hand_center_dot_radius
@@ -1687,6 +1689,8 @@ drawable game4
 drawable game5
 drawable game6
 drawable game7
+drawable hint_button_background
+drawable ic_baseline_lightbulb_24
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -1925,6 +1929,7 @@ id guideline
 id h
 id header_title
 id hideable
+id hintButton
 id home
 id homeAsUp
 id honorRequest
@@ -2149,6 +2154,7 @@ id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
 id time
+id timerTextView
 id title
 id titleDividerNoCustom
 id title_template
@@ -2177,7 +2183,7 @@ id visible_removing_fragment_view_tag
 id w
 id withText
 id withinBounds
-id wordTextView
+id wordContainer
 id wrap
 id wrap_content
 id x
