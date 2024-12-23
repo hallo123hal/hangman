@@ -4,6 +4,10 @@
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\drawable\\game5.png"
     },
     {
+        "merged": "com.map.nguyensontung.hangman.app-merged_res-21:/raw_buzz_sound.mp3.flat",
+        "source": "com.map.nguyensontung.hangman.app-main-23:/raw/buzz_sound.mp3"
+    },
+    {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-merged_res-21:\\drawable_game3.png.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\drawable\\game3.png"
     },
@@ -40,6 +44,10 @@
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\drawable\\ic_baseline_lightbulb_24.xml"
     },
     {
+        "merged": "com.map.nguyensontung.hangman.app-merged_res-21:/raw_ding_sound.mp3.flat",
+        "source": "com.map.nguyensontung.hangman.app-main-23:/raw/ding_sound.mp3"
+    },
+    {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-merged_res-21:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
@@ -52,12 +60,20 @@
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\drawable\\letter_background.xml"
     },
     {
+        "merged": "com.map.nguyensontung.hangman.app-merged_res-21:/raw_background_music.mp3.flat",
+        "source": "com.map.nguyensontung.hangman.app-main-23:/raw/background_music.mp3"
+    },
+    {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-merged_res-21:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-merged_res-21:\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-merged_res-21:\\drawable_hint_button_background.xml.flat",
+        "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\drawable\\hint_button_background.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-merged_res-21:\\drawable_game6.png.flat",
@@ -84,10 +100,6 @@
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\menu\\menu_main.xml"
     },
     {
-        "merged": "com.map.nguyensontung.hangman.app-merged_res-21:/layout_activity_game.xml.flat",
-        "source": "com.map.nguyensontung.hangman.app-main-23:/layout/activity_game.xml"
-    },
-    {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-merged_res-21:\\drawable_game7.png.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\drawable\\game7.png"
     },
@@ -106,14 +118,6 @@
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-merged_res-21:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-main-23:\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "com.map.nguyensontung.hangman.app-merged_res-21:/drawable_ic_baseline_lightbulb_24.xml.flat",
-        "source": "com.map.nguyensontung.hangman.app-main-23:/drawable/ic_baseline_lightbulb_24.xml"
-    },
-    {
-        "merged": "com.map.nguyensontung.hangman.app-merged_res-21:/drawable_hint_button_background.xml.flat",
-        "source": "com.map.nguyensontung.hangman.app-main-23:/drawable/hint_button_background.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\.gradle\\daemon\\7.4.2\\com.map.nguyensontung.hangman.app-merged_res-21:\\drawable_game2.png.flat",

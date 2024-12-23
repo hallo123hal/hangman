@@ -1,6 +1,8 @@
 package com.map.nguyensontung.hangman
 
 import android.graphics.Color
+import android.media.MediaPlayer
+import android.media.SoundPool
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -16,10 +18,14 @@ import android.os.CountDownTimer
 
 class GameActivity : AppCompatActivity() {
 
+    // MediaPlayer for background music
+    private lateinit var mediaPlayer: MediaPlayer
+
     private val gameManager = GameManager()
     private val charTextViews = mutableListOf<TextView>()
     private var timer: CountDownTimer? = null
     private var secondsElapsed = 0
+    private var timerTimeLeft = 60000L // 1 minute timer (in milliseconds)
 
     private lateinit var timerTextView: TextView
     private lateinit var wordContainer: LinearLayout
@@ -34,6 +40,16 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+
+        // Initialize MediaPlayer for background music
+        mediaPlayer = MediaPlayer.create(this, R.raw.background_music)
+        mediaPlayer.isLooping = true // Loop the music
+        mediaPlayer.start() // Start background music
+
+        // Initialize SoundPool for sound effects
+        soundPool = SoundPool.Builder().setMaxStreams(2).build()
+        dingSound = soundPool.load(this, R.raw.ding_sound, 1)
+        buzzSound = soundPool.load(this, R.raw.buzz_sound, 1)
 
         imageView = findViewById(R.id.imageView)
         wordContainer = findViewById(R.id.wordContainer)
@@ -165,17 +181,21 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    private fun startTimer() {
-        timer?.cancel() // Cancel any existing timer
-        secondsElapsed = 0
-        updateTimerDisplay()
-
-        timer = object : CountDownTimer(Long.MAX_VALUE, 1000) {
+    private fun startTimer(timeLeft: Long = 60000L) {
+        timer?.cancel()
+        timer = object : CountDownTimer(timeLeft, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                secondsElapsed++
+                // Update the timer display
+                timerTimeLeft = millisUntilFinished
+                secondsElapsed = ((millisUntilFinished / 1000).toInt())
                 updateTimerDisplay()
             }
-            override fun onFinish() {} // Won't finish due to Long.MAX_VALUE
+            override fun onFinish() {
+                gameLostTextView.visibility = View.VISIBLE
+                gameLostTextView.text = "Time's Up!"
+                lettersLayout.visibility = View.GONE
+                mediaPlayer.pause() // Stop the background music
+            }
         }.start()
     }
 
@@ -211,11 +231,65 @@ class GameActivity : AppCompatActivity() {
         hintButton.visibility = View.VISIBLE
         lettersLayout.visibility = View.VISIBLE
         startTimer()
+        mediaPlayer.start() // Resume background music
         updateUI(gameState)
+    }
+
+    companion object {
+        lateinit var soundPool: SoundPool
+        var dingSound: Int = 0
+        var buzzSound: Int = 0
+        // Play ding sound (correct guess)
+        fun playDing() {
+
+            soundPool.play(dingSound, 1f, 1f, 0, 0, 1f)
+        }
+
+        // Play buzz sound (incorrect guess)
+        fun playBuzz() {
+            soundPool.play(buzzSound, 1f, 1f, 0, 0, 1f)
+        }
+    }
+
+    // Override onPause to stop the music and cancel the timer when the app is paused
+    override fun onPause() {
+        super.onPause()
+        mediaPlayer.pause() // Pause the background music
+        timer?.cancel() // Cancel the timer
+    }
+
+    // Override onResume to resume the music and timer when the app comes back to the foreground
+    override fun onResume() {
+        super.onResume()
+        if (!mediaPlayer.isPlaying) {
+            mediaPlayer.start() // Resume background music
+        }
+        startTimer(timerTimeLeft) // Start the timer again if needed
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putLong("remainingTime", timerTimeLeft)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        timerTimeLeft = savedInstanceState.getLong("remainingTime", 60000L)
+    }
+    // Override onStop to stop the music when the app is stopped
+    override fun onStop() {
+        super.onStop()
+        if (mediaPlayer.isPlaying) {
+            mediaPlayer.stop() // Stop the music when the app is stopped
+        }
+        stopTimer()
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        mediaPlayer.stop() // Stop background music when leaving the activity
+        mediaPlayer.release() // Release resources
+        soundPool.release() // Release sound effects resources
         stopTimer() // Clean up timer when activity is destroyed
     }
 }

@@ -1,6 +1,8 @@
 package com.map.nguyensontung.hangman
 
 import kotlin.random.Random
+import android.content.Context
+import com.map.nguyensontung.hangman.GameActivity
 
 class GameManager {
     private lateinit var underscoreWord: String
@@ -53,10 +55,14 @@ class GameManager {
             positionGuesses.getOrPut(selectedPosition) { mutableSetOf() }.add(letter)
 
             if (wordToGuess[selectedPosition].equals(letter, true)) {
+                // Correct guess: Play ding sound
+                GameActivity.playDing() // Calling playDing() from GameActivity
                 val sb = StringBuilder(underscoreWord)
                 sb.setCharAt(selectedPosition, letter)
                 underscoreWord = sb.toString()
             } else {
+                // Incorrect guess: Play buzz sound
+                GameActivity.playBuzz() // Calling playBuzz() from GameActivity
                 currentTries++
             }
         }
